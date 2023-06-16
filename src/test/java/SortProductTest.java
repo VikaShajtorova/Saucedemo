@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SortProduct extends BaseTest{
+public class SortProductTest extends BaseTest{
     String userName = "user-name";
     String password = "password";
     String loginButton = "login-button";
