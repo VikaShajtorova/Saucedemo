@@ -2,7 +2,9 @@ package tests;
 
 import static org.testng.Assert.*;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
@@ -49,6 +51,15 @@ public class CartTest extends BaseTest {
         cartPage.pressCheckoutButton();
 
         assertTrue(checkoutPage.titleOnCheckoutPageIsVisible(), "Пользователь не перешел на страницу Checkout");
+    }
+
+    @Test
+    public void vhfhfhf(){
+        driver.get("https://the-internet.herokuapp.com/context_menu");
+        Actions actions = new Actions(driver);
+        actions.contextClick(driver.findElement(By.id("hot-spot"))).build().perform();
+        Alert alert = driver.switchTo().alert();
+
     }
 
 }
