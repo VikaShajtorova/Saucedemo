@@ -8,6 +8,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
+
+    @Test
+    public void compareProductDataInShoppingCartWithProductDataInCatalog(){
+        loginPage.logInWithValidData();
+        inventoryPage.addItemToCartByItemName("Sauce Labs Bike Light");
+        String nameProduct = inventoryPage.getNameProduct("Sauce Labs Bike Light");
+        inventoryPage.clickAddToCartButton();
+
+        assertEquals(cartPage.getProductNameInBasketByIndex(0),nameProduct,"Товар не совпадает");
+    }
     @Test
     public void comparePriceOfProductInCartWithPriceInCatalog() {
         loginPage.logInWithValidData();
@@ -21,25 +31,27 @@ public class CartTest extends BaseTest {
     }
 
     @Test
-    public void pressContinueShoppingButton() {
+    public void clickContinueShoppingButton() {
         loginPage.logInWithValidData();
         inventoryPage.addItemToCartByItemName("Sauce Labs Backpack");
         inventoryPage.clickCartButton();
-        cartPage.pressContinueShoppingButton();
+        cartPage.clickContinueShoppingButton();
 
-        assertTrue(inventoryPage.titleVisible(), "Пользователь не вернулся на страницу inventory");
+        assertTrue(inventoryPage.isPageOpen(), "Пользователь не вернулся на страницу inventory");
     }
 
     @Test
-    public void pressRemoveButton() {
+    public void removeAnItemFromShoppingCartByClickingRemoveButton(){
         loginPage.logInWithValidData();
         inventoryPage.addItemToCartByItemName("Sauce Labs Backpack");
-        inventoryPage.addItemToCartByItemName("Sauce Labs Bike Light");
         inventoryPage.clickCartButton();
-        String quantityOfProductsInCart = String.valueOf(cartPage.getTextInCart());
-        cartPage.pressRemoveButton("Sauce Labs Backpack");
+        int size = cartPage.getSizeListProduct();
 
-        assertNotEquals(cartPage.getTextInCart(),quantityOfProductsInCart,"Товар не удален из корзины");
+        assertEquals(size,"1","Товар отсутствует в корзине");
+
+        cartPage.clickRemoveButton("Sauce Labs Backpack");
+
+        assertEquals(cartPage.getSizeListProduct(),"0","Товар не удален из корзины");
 
     }
 
@@ -48,18 +60,10 @@ public class CartTest extends BaseTest {
         loginPage.logInWithValidData();
         inventoryPage.addItemToCartByItemName("Sauce Labs Backpack");
         inventoryPage.clickCartButton();
-        cartPage.pressCheckoutButton();
+        cartPage.clickCheckoutButton();
 
-        assertTrue(checkoutPage.titleOnCheckoutPageIsVisible(), "Пользователь не перешел на страницу Checkout");
+        assertTrue(checkoutPage.isPageOpen(), "Пользователь не перешел на страницу Checkout");
     }
 
-    @Test
-    public void vhfhfhf(){
-        driver.get("https://the-internet.herokuapp.com/context_menu");
-        Actions actions = new Actions(driver);
-        actions.contextClick(driver.findElement(By.id("hot-spot"))).build().perform();
-        Alert alert = driver.switchTo().alert();
-
-    }
 
 }

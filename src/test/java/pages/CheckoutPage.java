@@ -9,6 +9,12 @@ public class CheckoutPage extends BasePage{
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
+
+    @Override
+    public boolean isPageOpen() {
+        return isExist(CHECKOUT_TITLE);
+    }
+
     public boolean titleOnCheckoutPageIsVisible(){
         return driver.findElement(CHECKOUT_TITLE).isDisplayed();
     }

@@ -1,3 +1,6 @@
+package locators;
+
+import locators.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import static org.testng.Assert.*;
@@ -7,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SortProductTest extends BaseTest{
+public class SortProductTest extends BaseTest {
     String userName = "user-name";
     String password = "password";
     String loginButton = "login-button";
