@@ -2,10 +2,8 @@ package tests;
 
 import static org.testng.Assert.*;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 public class CartTest extends BaseTest {
 

@@ -1,4 +1,4 @@
-package tests;
+package tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import pages.CartPage;
 import pages.CheckoutPage;
 import pages.InventoryPage;
@@ -13,12 +14,14 @@ import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners
 public class BaseTest {
-    WebDriver driver;
-    LoginPage loginPage;
-    InventoryPage inventoryPage;
-    CartPage cartPage;
-    CheckoutPage checkoutPage;
+    protected WebDriver driver;
+    protected LoginPage loginPage;
+    protected InventoryPage inventoryPage;
+    protected CartPage cartPage;
+    protected CheckoutPage checkoutPage;
+
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();

@@ -1,4 +1,6 @@
 package tests;
 
-public class CheckoutTest extends BaseTest{
+import tests.base.BaseTest;
+
+public class CheckoutTest extends BaseTest {
 }

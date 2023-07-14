@@ -3,9 +3,11 @@ package tests;
 import static org.testng.Assert.*;
 
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class LoginTest extends BaseTest {
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void logInWithValidData() {
         loginPage.logInWithValidData();
 
